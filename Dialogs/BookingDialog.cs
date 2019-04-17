@@ -36,7 +36,7 @@ namespace Microsoft.BotBuilderSamples
 
             if (bookingDetails.Destination == null)
             {
-                return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = MessageFactory.Text("Where would you like to travel to?") }, cancellationToken);
+                return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = MessageFactory.Text("Qual o seu sonho de viagem?") }, cancellationToken);
             }
             else
             {
@@ -52,7 +52,7 @@ namespace Microsoft.BotBuilderSamples
 
             if (bookingDetails.Origin == null)
             {
-                return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = MessageFactory.Text("Where are you traveling from?") }, cancellationToken);
+                return await stepContext.PromptAsync(nameof(TextPrompt), new PromptOptions { Prompt = MessageFactory.Text("Estamos partindo de qual cidade?") }, cancellationToken);
             }
             else
             {
@@ -81,7 +81,7 @@ namespace Microsoft.BotBuilderSamples
 
             bookingDetails.TravelDate = (string)stepContext.Result;
 
-            var msg = $"Please confirm, I have you traveling to: {bookingDetails.Destination} from: {bookingDetails.Origin} on: {bookingDetails.TravelDate}";
+            var msg = $"Recapitulando, seu sonho é sair do: {bookingDetails.Destination} para chegar em: {bookingDetails.Origin} nas datas de: {bookingDetails.TravelDate}";
 
             return await stepContext.PromptAsync(nameof(ConfirmPrompt), new PromptOptions { Prompt = MessageFactory.Text(msg) }, cancellationToken);
         }
